@@ -7,9 +7,16 @@ function runTimer(timeLeft){
 	}
 }
 
+runTimer(timer);
+
 const timesUp = new Promise((resolve, reject) => {
 	if(timer === 0){
-		console.log("time is up yo");
-		resolve();
+		resolve("beep");
 	}
-}
+});
+
+timesUp.then(function(resolve){
+	console.log("time is up yo" + resolve);
+}, function(error) {
+	console.error("Failed!", error);
+});
